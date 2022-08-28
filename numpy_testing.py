@@ -73,3 +73,13 @@ print("a random initialized array: \n{}".format(a))
 np.save("random.npy", a)
 b = np.load("random.npy")
 print("a loaded array: \n{}".format(b))
+
+print("==array stuff==")
+# Generate an array with random values
+a = np.random.randint(0, 10, 10000)
+# Set b to be an array summing all the unique values of a and putting them into their own indexes
+# e.g. bincount([1,2,2,2,3,3]) => [1,3,2]
+b = np.bincount(a)
+# Find the % chance of each value
+b = b/b.sum()
+print("Probabilities of a random num 0-9 showing up from np.random.randint: \n{}".format(b))
