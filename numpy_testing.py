@@ -1,4 +1,5 @@
 import numpy as np
+import  matplotlib.pylab as plt
 
 print("==basic array==")
 # making a basic np array
@@ -83,3 +84,17 @@ b = np.bincount(a)
 # Find the % chance of each value
 b = b/b.sum()
 print("Probabilities of a random num 0-9 showing up from np.random.randint: \n{}".format(b))
+
+print("\n==poisson distribution==")
+# a poisson distribution is a function that returns a sample given a certain expected frequency
+# it follows the form: (rate ^ k) * e^-rate / k!
+# Neat article describing derivation:
+# https://medium.com/@andrew.chamberlain/deriving-the-poisson-distribution-from-the-binomial-distribution-840cc1668239
+t = np.random.poisson(5, size=1000000)
+s = np.bincount(t)
+print("0 indexed counts of each poisson distribution probability of 5: \n{}".format(s))
+#s = s/s.sum()
+print("0 indexed probability of each expecting 5: \n{}".format(s/s.sum()))
+
+plt.plot(s)
+plt.show()
